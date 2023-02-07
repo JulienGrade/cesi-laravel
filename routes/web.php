@@ -31,6 +31,12 @@ Route::post('/enregistrer-produit', [ProductController::class, 'save']);
 // Route permettant de supprimer un produit
 Route::delete('/supprimer-produit/{id}', [ProductController::class, 'delete']);
 
+// Route permettant d'afficher le formulaire d'édition d'un produit
+Route::get('/modifier-produit/{id}', [ProductController::class, 'edit']);
+
+// Route permettant d'enregistrer les modifications d'un produit
+Route::put('/edition-produit/{id}', [ProductController::class, 'saveEdit']);
+
 // Route de la page des services
 Route::get('/services', [ServiceController::class, 'index']);
 

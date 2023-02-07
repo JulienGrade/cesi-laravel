@@ -14,7 +14,8 @@
         <div class="card-body">
             <p class="text-center fs-3">{{$product->product_description}}</p>
             <hr />
-            <div>
+            <div class="d-flex justify-content-between">
+                <a class="btn btn-primary btn-lg" href="{{url('/modifier-produit', [$product->id])}}">Éditer</a>
                 <form action="{{url('supprimer-produit', [$product->id])}}" method="POST">
                     @csrf
                     @method('DELETE')

@@ -19,6 +19,12 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
+    @if(Session::has('edit_product_success'))
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <p>{{Session::get('edit_product_success')}}</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     @foreach($products as $product)
         <div class="card w-50 mx-auto my-5 text-dark">
             <div class="card-header">

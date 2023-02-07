@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
 {
@@ -69,5 +70,40 @@ class ProductController extends Controller
         //DB::table('products')->where('id', $id)->delete();
 
         return redirect('/')->with('delete_product_success', 'Le produit a bien été supprimé');
+    }
+
+    /**
+     * Permet d'afficher la vue de modification d'un produit
+     * @param $id
+     * @return Application|Factory|View
+     */
+    public function edit($id)
+    {
+        $product = Product::find($id);
+
+        return view('products.edit')->with('product', $product);
+    }
+
+    /**
+     * Permet d'enregistrer les modifications d'un produit
+     * @param $id
+     * @param Request $request
+     * @return Application|Redirector|RedirectResponse
+     */
+    public function saveEdit($id, Request $request)
+    {
+        $product = Product::find($id);
+        $request->validate([
+            'product_name' => ['required',Rule::unique('products')->ignore($product->id),'max:255'],
+            'product_price' => 'required|numeric|integer|min:1',
+            'product_description' => 'required|min:20',
+        ]);
+        $product->product_name = $request->input('product_name');
+        $product->product_price = $request->input('product_price');
+        $product->product_description = $request->input('product_description');
+
+        $product->update();
+
+        return redirect('/')->with('edit_product_success', 'Le produit a bien été modifié');
     }
 }
