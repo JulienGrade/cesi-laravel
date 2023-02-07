@@ -22,15 +22,4 @@ class HomepageController extends Controller
         return view('homepage.home')->with('products', $products);
     }
 
-    /**
-     * Permet d'afficher la page de détail d'un produit
-     * @param $id
-     * @return Application|Factory|View
-     */
-    public function show($id)
-    {
-        $product = Product::where(['id' => $id])->first();
-
-        return view('homepage.show')->with('product', $product);
-    }
 }

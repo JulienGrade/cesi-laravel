@@ -1,0 +1,26 @@
+@extends('layouts.app')
+@section('title')
+    Ajouter un produit
+@endsection
+
+@section('content')
+    <div class="card w-75 mx-auto p-5 my-5 text-dark">
+        <form action="{{url('/enregistrer-produit')}}" method="POST">
+            @csrf
+            @method("POST")
+            <div class="form-group">
+                <label for="product_name">Nom du produit</label>
+                <input id="product_name" type="text" name="product_name" placeholder="Nom du produit" class="form-control mt-3"/>
+            </div>
+            <div class="form-group">
+                <label for="product_price">Prix du produit</label>
+                <input id="product_price" type="text" name="product_price" placeholder="Prix du produit" class="form-control mt-3"/>
+            </div>
+            <div class="form-group">
+                <label for="product_description">Description du produit</label>
+                <textarea id="product_description" name="product_description" class="form-control mt-3" rows="10" cols="30"></textarea>
+            </div>
+            <input type="submit" value="Enregistrer le produit" class="btn btn-primary mt-5" />
+        </form>
+    </div>
+@endsection
