@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 // Route de la page d'accueil en GET
 Route::get('/', [HomepageController::class, 'index']);
+
+// Route de la page de vue détaillée d'un produit
+Route::get('/produit/{id}', [HomepageController::class, 'show']);

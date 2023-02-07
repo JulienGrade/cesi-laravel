@@ -14,6 +14,7 @@
             </div>
             <div class="card-body">
                 <p class="text-center fs-3">{{$product->product_description}}</p>
+                <a href="/produit/{{$product->id}}">Voir en détail</a>
             </div>
             <div class="card-footer">
                 <p class="text-end text-primary text-bolder fs-2 fw-bold">{{$product->product_price}} €</p>
