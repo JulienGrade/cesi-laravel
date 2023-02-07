@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
@@ -23,10 +24,10 @@ Route::get('/', [HomepageController::class, 'index']);
 Route::get('/produit/{id}', [ProductController::class, 'show']);
 
 // Route de la page de création d'un produit
-Route::get('/ajout/produit', [ProductController::class, 'create']);
+Route::get('/ajout/produit', [ProductController::class, 'create'])->middleware('auth');
 
 // Route d'enregistrement d'un produit
-Route::post('/enregistrer-produit', [ProductController::class, 'save']);
+Route::post('/enregistrer-produit', [ProductController::class, 'save'])->middleware('auth');
 
 // Route permettant de supprimer un produit
 Route::delete('/supprimer-produit/{id}', [ProductController::class, 'delete']);
@@ -38,6 +39,15 @@ Route::get('/modifier-produit/{id}', [ProductController::class, 'edit']);
 Route::put('/edition-produit/{id}', [ProductController::class, 'saveEdit']);
 
 // Route de la page des services
-Route::get('/services', [ServiceController::class, 'index']);
+Route::get('/services', [ServiceController::class, 'index'])->middleware('auth');
+
+// Route de la page de connexion
+Route::get('/connexion', [AuthController::class, 'login']);
+
+// Route pour s'authentifier
+Route::post('/connexion', [AuthController::class, 'authenticate'])->name('connexion');
+
+// Route pour se déconnecter
+Route::post('/deconnexion', [AuthController::class, 'logout']);
 
 
