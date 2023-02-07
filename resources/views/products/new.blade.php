@@ -5,6 +5,16 @@
 
 @section('content')
     <div class="card w-75 mx-auto p-5 my-5 text-dark">
+        @if(count($errors)>0)
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <form action="{{url('/enregistrer-produit')}}" method="POST">
             @csrf
             @method("POST")

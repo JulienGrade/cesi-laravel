@@ -9,6 +9,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -39,10 +40,17 @@ class ProductController extends Controller
      */
     public function save(Request $request)
     {
+        $request->validate([
+            'product_name' => 'required|unique:products|max:255',
+            'product_price' => 'required|numeric|integer|min:1',
+            'product_description' => 'required|min:20',
+        ]);
+
         $product = new Product();
-        $product->product_name = $request->product_name;
-        $product->product_price = $request->product_price;
-        $product->product_description = $request->product_description;
+        $product->product_name = $request->input('product_name');
+        $product->product_price = $request->input('product_price');
+        $product->product_description = $request->input('product_description');
+
 
         $product->save();
 
