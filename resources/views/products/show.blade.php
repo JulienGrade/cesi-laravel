@@ -34,7 +34,7 @@
                     {{$comment->user->name}}<br />
                     <span class="fs-5 text-black">{{$comment->content}}</span>
                 </blockquote>
-                <figcaption>le {{$comment->created_at}}->format('d / m / Y')}</figcaption>
+                <figcaption>le {{$comment->created_at->format('d / m / Y')}}</figcaption>
             </figure>
         @empty
             <h3>Pas encore de commentaire</h3>
