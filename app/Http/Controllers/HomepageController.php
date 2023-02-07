@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomepageController extends Controller
 {
@@ -15,8 +17,8 @@ class HomepageController extends Controller
      */
     public function index()
     {
-        $name = "John";
+        $products = Product::orderBy('product_price', 'desc')->paginate(1);
 
-        return view('homepage.home', ['name' => $name]);
+        return view('homepage.home')->with('products', $products);
     }
 }
