@@ -7,6 +7,12 @@
     <div class="card mt-5 p-5 bg-primary text-white">
         <h1>Welcome to the Laravel Project</h1>
     </div>
+    @if(Session::has('add_product_success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <p>{{Session::get('add_product_success')}}</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     @foreach($products as $product)
         <div class="card w-50 mx-auto my-5 text-dark">
             <div class="card-header">

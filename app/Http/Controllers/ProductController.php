@@ -46,6 +46,6 @@ class ProductController extends Controller
 
         $product->save();
 
-        return back();
+        return redirect('/')->with('add_product_success', 'Le produit '.$product->input('product_name').' a bien été ajouté');
     }
 }
