@@ -28,5 +28,10 @@ Route::get('/ajout/produit', [ProductController::class, 'create']);
 // Route d'enregistrement d'un produit
 Route::post('/enregistrer-produit', [ProductController::class, 'save']);
 
+// Route permettant de supprimer un produit
+Route::delete('/supprimer-produit/{id}', [ProductController::class, 'delete']);
+
 // Route de la page des services
 Route::get('/services', [ServiceController::class, 'index']);
+
+

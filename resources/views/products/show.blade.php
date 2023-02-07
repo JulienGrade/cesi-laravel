@@ -13,6 +13,14 @@
         </div>
         <div class="card-body">
             <p class="text-center fs-3">{{$product->product_description}}</p>
+            <hr />
+            <div>
+                <form action="{{url('supprimer-produit', [$product->id])}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button onclick="confirm('Supprimer le produit ?')" type="submit" class="btn btn-warning">Supprimer</button>
+                </form>
+            </div>
         </div>
         <div class="card-footer">
             <p class="text-end text-primary text-bolder fs-2 fw-bold">{{$product->product_price}} €</p>

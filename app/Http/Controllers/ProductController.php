@@ -56,4 +56,18 @@ class ProductController extends Controller
 
         return redirect('/')->with('add_product_success', 'Le produit '.$request->input('product_name').' a bien été ajouté');
     }
+
+    /**
+     * Permet de supprimer un produit
+     * @param $id
+     * @return Application|Redirector|RedirectResponse
+     */
+    public function delete($id)
+    {
+        $product = Product::find($id);
+        $product->delete();
+        //DB::table('products')->where('id', $id)->delete();
+
+        return redirect('/')->with('delete_product_success', 'Le produit a bien été supprimé');
+    }
 }
