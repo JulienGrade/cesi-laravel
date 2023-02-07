@@ -4,6 +4,9 @@
 @endsection
 
 @section('content')
+    <div class="card mt-5 p-5 bg-primary text-white">
+        <h1>Création de produit</h1>
+    </div>
     <div class="card w-75 mx-auto p-5 my-5 text-dark">
         @if(count($errors)>0)
             <div class="alert alert-danger alert-dismissible fade show" role="alert">

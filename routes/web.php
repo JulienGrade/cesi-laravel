@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
@@ -17,8 +18,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/* GESTION DE LA PAGE ACCUEIL */
+
 // Route de la page d'accueil en GET
 Route::get('/', [HomepageController::class, 'index']);
+
+/* GESTION DES PRODUITS */
 
 // Route de la page de vue détaillée d'un produit
 Route::get('/produit/{id}', [ProductController::class, 'show']);
@@ -38,8 +43,23 @@ Route::get('/modifier-produit/{id}', [ProductController::class, 'edit']);
 // Route permettant d'enregistrer les modifications d'un produit
 Route::put('/edition-produit/{id}', [ProductController::class, 'saveEdit']);
 
+/* GESTION DES PRODUITS */
+
+// Route permettant d'afficher la page de création d'une catégorie
+Route::get('/ajout/categorie', [CategoryController::class, 'create']);
+
+// Route permettant d'enregistrer une catégorie
+Route::post('/enregistrer-categorie', [CategoryController::class, 'save']);
+
+// Route permettant de supprimer une catégorie
+Route::delete('/supprimer-categorie/{id}', [CategoryController::class, 'delete']);
+
+/* GESTION DE LA PAGE SERVICES */
+
 // Route de la page des services
 Route::get('/services', [ServiceController::class, 'index'])->middleware('auth');
+
+/* GESTION DE L'AUTHENTIFICATION */
 
 // Route de la page de connexion
 Route::get('/connexion', [AuthController::class, 'login']);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -15,6 +16,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        return view('services.service');
+        $categories = Category::All();
+
+        return view('services.service')->with('categories', $categories);
     }
 }
