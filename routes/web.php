@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
@@ -43,7 +44,7 @@ Route::get('/modifier-produit/{id}', [ProductController::class, 'edit']);
 // Route permettant d'enregistrer les modifications d'un produit
 Route::put('/edition-produit/{id}', [ProductController::class, 'saveEdit']);
 
-/* GESTION DES PRODUITS */
+/* GESTION DES CATEGORIES */
 
 // Route permettant d'afficher la page de création d'une catégorie
 Route::get('/ajout/categorie', [CategoryController::class, 'create']);
@@ -53,6 +54,11 @@ Route::post('/enregistrer-categorie', [CategoryController::class, 'save']);
 
 // Route permettant de supprimer une catégorie
 Route::delete('/supprimer-categorie/{id}', [CategoryController::class, 'delete']);
+
+/* GESTION DES COMMENTAIRES */
+
+// Route permettant d'enregistrer un commentaire
+Route::post('commenter/produit/{id}', [CommentController::class, 'new']);
 
 /* GESTION DE LA PAGE SERVICES */
 
