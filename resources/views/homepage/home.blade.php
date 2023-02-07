@@ -28,7 +28,7 @@
     @foreach($products as $product)
         <div class="card w-50 mx-auto my-5 text-dark">
             <div class="card-header">
-                <h1 class="text-center">{{$product->product_name}}</h1>
+                <h1 class="text-center">{{$product->product_name}} - {{$product->product_category}}</h1>
             </div>
             <div class="card-body">
                 <p class="text-center fs-3">{{$product->product_description}}</p>
@@ -41,3 +41,4 @@
     @endforeach
     {{$products->links()}}
 @endsection
+

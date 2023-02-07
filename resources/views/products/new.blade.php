@@ -26,6 +26,15 @@
                 <input id="product_name" type="text" name="product_name" placeholder="Nom du produit" class="form-control mt-3"/>
             </div>
             <div class="form-group">
+                <label for="product_category">Catégorie du produit</label>
+                <select id="product_category" name="product_category" class="form-select select-2 w-100">
+                    <option selected="selected">Sélectionner</option>
+                    @foreach($categories as $category)
+                        <option value="{{$category->category_name}}">{{$category->category_name}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="product_price">Prix du produit</label>
                 <input id="product_price" type="text" name="product_price" placeholder="Prix du produit" class="form-control mt-3"/>
             </div>
